@@ -1,13 +1,13 @@
 {
-  "name": "net.peeweek.gameplay-ingredients",
-  "displayName": "Gameplay Ingredients",
+  "name": "com.stylovich.gameplay-ingredients",
+  "displayName": "Gameplay Ingredients (Tri Inspector)",
   "version": "2021.3.2",
   "category": "Gameplay",
-  "documentationUrl": "https://peeweek.readthedocs.io/en/latest/gameplay-ingredients/index.html",
-  "licensesUrl": "https://github.com/peeweek/net.peeweek.gameplay-ingredients/blob/master/LICENSE",
-  "changelogUrl": "https://github.com/peeweek/net.peeweek.gameplay-ingredients/blob/master/CHANGELOG.md",
+  "documentationUrl": "https://github.com/stylovich/stylovich.gameplay-ingredients#readme",
+  "licensesUrl": "https://github.com/stylovich/stylovich.gameplay-ingredients/blob/master/LICENSE",
+  "changelogUrl": "https://github.com/stylovich/stylovich.gameplay-ingredients/blob/master/CHANGELOG.md",
   "unity": "2021.3",
-  "description": "Gameplay ingredients - A Collection of scripts for the editor and runtime to set-up gameplay actions and logic in your games.",
+  "description": "Fork of Gameplay Ingredients with migration from NaughtyAttributes to Tri Inspector. A collection of scripts for editor and runtime that simplifies building gameplay actions and logic.",
   "dependencies": {
     "com.unity.cinemachine": "2.8.4",
     "com.unity.timeline": "1.6.4",
@@ -25,7 +25,7 @@
   "hideInEditor": false,
   "author" : 
   {
-    "name" : "PeeWeeK.NET",
-    "url" : "https://github.com/peeweek/"
+    "name" : "Stylovich",
+    "url" : "https://github.com/stylovich/"
   }
 }
