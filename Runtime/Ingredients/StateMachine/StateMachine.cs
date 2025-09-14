@@ -8,7 +8,7 @@ namespace GameplayIngredients.StateMachines
 {
     [HelpURL(Help.URL + "state-machines")]
     [AddComponentMenu(ComponentMenu.stateMachinePath + "State Machine")]
-    [AdvancedHierarchyIcon("Packages/net.peeweek.gameplay-ingredients/Icons/Misc/ic-StateMachine.png")]
+    [AdvancedHierarchyIcon("Packages/com.stylovich.gameplay-ingredients/Icons/Misc/ic-StateMachine.png")]
     public class StateMachine : MonoBehaviour
     {
         [StateMachineState]
@@ -39,7 +39,7 @@ namespace GameplayIngredients.StateMachines
         [Button("Reset State Objects")]
         private void UpdateFromState()
         {
-            foreach(var state in States)
+            foreach (var state in States)
             {
                 state.gameObject.SetActive(state == States.FirstOrDefault(o => o.StateName == DefaultState));
             }
@@ -66,7 +66,7 @@ namespace GameplayIngredients.StateMachines
             }
 
             components = this.GetComponents<SetStateAction>();
-            foreach(var action in components)
+            foreach (var action in components)
             {
                 action.Name = $"Set State {action.state}";
             }
@@ -89,7 +89,7 @@ namespace GameplayIngredients.StateMachines
         {
             foreach (var state in States)
             {
-                if(state.gameObject.activeSelf)
+                if (state.gameObject.activeSelf)
                     state.gameObject.SetActive(false);
             }
 
@@ -100,7 +100,7 @@ namespace GameplayIngredients.StateMachines
         {
             State newState = States.FirstOrDefault(o => o.StateName == stateName);
 
-            if(newState != null)
+            if (newState != null)
             {
                 if (m_CurrentState != null)
                 {
@@ -125,9 +125,9 @@ namespace GameplayIngredients.StateMachines
 
         void SingleUpdate()
         {
-            if (GameplayIngredientsSettings.currentSettings.allowUpdateCalls 
-                && m_CurrentState != null 
-                && m_CurrentState.OnStateUpdate != null 
+            if (GameplayIngredientsSettings.currentSettings.allowUpdateCalls
+                && m_CurrentState != null
+                && m_CurrentState.OnStateUpdate != null
                 && m_CurrentState.OnStateUpdate.Length > 0)
             {
                 Callable.Call(m_CurrentState.OnStateUpdate, this.gameObject);

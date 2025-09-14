@@ -279,16 +279,16 @@ namespace GameplayIngredients.Editor
 
                 static Contents()
                 {
-                    playFromHere = EditorGUIUtility.Load("Packages/net.peeweek.gameplay-ingredients/Icons/SceneViewToolbar/PlayFromHere.png") as Texture2D;
-                    playFromHere_Stop = EditorGUIUtility.Load("Packages/net.peeweek.gameplay-ingredients/Icons/SceneViewToolbar/PlayFromHere_Stop.png") as Texture2D;
-                    pointOfView = EditorGUIUtility.Load("Packages/net.peeweek.gameplay-ingredients/Icons/SceneViewToolbar/POV.png") as Texture2D;
-                    linkGameView = EditorGUIUtility.Load("Packages/net.peeweek.gameplay-ingredients/Icons/SceneViewToolbar/Camera.png") as Texture2D;
+                    playFromHere = EditorGUIUtility.Load("Packages/com.stylovich.gameplay-ingredients/Icons/SceneViewToolbar/PlayFromHere.png") as Texture2D;
+                    playFromHere_Stop = EditorGUIUtility.Load("Packages/com.stylovich.gameplay-ingredients/Icons/SceneViewToolbar/PlayFromHere_Stop.png") as Texture2D;
+                    pointOfView = EditorGUIUtility.Load("Packages/com.stylovich.gameplay-ingredients/Icons/SceneViewToolbar/POV.png") as Texture2D;
+                    linkGameView = EditorGUIUtility.Load("Packages/com.stylovich.gameplay-ingredients/Icons/SceneViewToolbar/Camera.png") as Texture2D;
 
-                    linkGameViewActive = EditorGUIUtility.Load("Packages/net.peeweek.gameplay-ingredients/Icons/SceneViewToolbar/CameraActive.png") as Texture2D;
-                    linkGameViewCM = EditorGUIUtility.Load("Packages/net.peeweek.gameplay-ingredients/Icons/SceneViewToolbar/CameraCM.png") as Texture2D;
-                    checkWindow = EditorGUIUtility.Load("Packages/net.peeweek.gameplay-ingredients/Icons/SceneViewToolbar/CheckResolve.png") as Texture2D;
-                    commentsWindow = EditorGUIUtility.Load("Packages/net.peeweek.gameplay-ingredients/Icons/SceneViewToolbar/Comments.png") as Texture2D;
-                    ingredientsExplorer = EditorGUIUtility.Load("Packages/net.peeweek.gameplay-ingredients/Icons/Misc/ic-callable.png") as Texture2D;
+                    linkGameViewActive = EditorGUIUtility.Load("Packages/com.stylovich.gameplay-ingredients/Icons/SceneViewToolbar/CameraActive.png") as Texture2D;
+                    linkGameViewCM = EditorGUIUtility.Load("Packages/com.stylovich.gameplay-ingredients/Icons/SceneViewToolbar/CameraCM.png") as Texture2D;
+                    checkWindow = EditorGUIUtility.Load("Packages/com.stylovich.gameplay-ingredients/Icons/SceneViewToolbar/CheckResolve.png") as Texture2D;
+                    commentsWindow = EditorGUIUtility.Load("Packages/com.stylovich.gameplay-ingredients/Icons/SceneViewToolbar/Comments.png") as Texture2D;
+                    ingredientsExplorer = EditorGUIUtility.Load("Packages/com.stylovich.gameplay-ingredients/Icons/Misc/ic-callable.png") as Texture2D;
                 }
             }
         }

@@ -22,7 +22,7 @@ namespace GameplayIngredients.Editor
             get
             {
                 if (s_Header == null)
-                    s_Header = (Texture2D)EditorGUIUtility.Load("Packages/net.peeweek.gameplay-ingredients/Editor/WelcomeScreen/welcome-title.png");
+                    s_Header = (Texture2D)EditorGUIUtility.Load("Packages/com.stylovich.gameplay-ingredients/Editor/WelcomeScreen/welcome-title.png");
 
                 return s_Header;
             }

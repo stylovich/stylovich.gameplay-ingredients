@@ -3,7 +3,7 @@ using UnityEngine;
 namespace GameplayIngredients.Events
 {
     [AddComponentMenu(ComponentMenu.eventsPath + "On Enable|Disable Event")]
-    [AdvancedHierarchyIcon("Packages/net.peeweek.gameplay-ingredients/Icons/Events/ic-event-enable-disable.png")]
+    [AdvancedHierarchyIcon("Packages/com.stylovich.gameplay-ingredients/Icons/Events/ic-event-enable-disable.png")]
     public class OnEnableDisableEvent : EventBase
     {
         public Callable[] OnEnableEvent;

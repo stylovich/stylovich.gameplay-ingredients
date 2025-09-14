@@ -33,7 +33,7 @@ namespace GameplayIngredients.Comments.Editor
 
         public void DrawComment(Comment comment, bool requireEdit = false)
         {
-            if(requireEdit)
+            if (requireEdit)
             {
                 editMessagePath = rootMessage.propertyPath;
                 requireEdit = false;
@@ -50,7 +50,7 @@ namespace GameplayIngredients.Comments.Editor
                 EditorGUI.BeginDisabledGroup(comment.message.from != CommentsWindow.user);
                 bool editRoot = DrawEditButton(this.editRoot);
                 EditorGUI.EndDisabledGroup();
-                if(EditorGUI.EndChangeCheck())
+                if (EditorGUI.EndChangeCheck())
                 {
                     if (editRoot)
                         editMessagePath = rootMessage.propertyPath;
@@ -61,18 +61,18 @@ namespace GameplayIngredients.Comments.Editor
 
             GUILayout.Space(6);
 
-            if(editRoot)
+            if (editRoot)
             {
                 serializedObject.Update();
                 EditorGUILayout.PropertyField(title);
-                using(new GUILayout.HorizontalScope())
+                using (new GUILayout.HorizontalScope())
                 {
                     EditorGUILayout.PropertyField(focus);
 
-                    if(!m_IsAsset && GUILayout.Button("Align to SceneView", GUILayout.ExpandWidth(true)))
+                    if (!m_IsAsset && GUILayout.Button("Align to SceneView", GUILayout.ExpandWidth(true)))
                     {
                         focus.boolValue = true;
-                        if(SceneView.lastActiveSceneView != null)
+                        if (SceneView.lastActiveSceneView != null)
                         {
                             SceneComment c = serializedObject.targetObject as SceneComment;
                             c.gameObject.transform.position = SceneView.lastActiveSceneView.camera.transform.position;
@@ -97,10 +97,10 @@ namespace GameplayIngredients.Comments.Editor
             GUILayout.Space(6);
             DrawMessage(rootMessage, -1);
             int replyCount = replies.arraySize;
-            using(new GUILayout.HorizontalScope())
+            using (new GUILayout.HorizontalScope())
             {
                 GUILayout.Space(16);
-                using(new GUILayout.VerticalScope())
+                using (new GUILayout.VerticalScope())
                 {
                     for (int i = 0; i < replyCount; i++)
                     {
@@ -112,7 +112,7 @@ namespace GameplayIngredients.Comments.Editor
 
         void DrawMessage(SerializedProperty message, int replyIndex)
         {
-            using(new EditorGUILayout.VerticalScope(Styles.message))
+            using (new EditorGUILayout.VerticalScope(Styles.message))
             {
                 SerializedProperty body = message.FindPropertyRelative("body");
                 SerializedProperty URL = message.FindPropertyRelative("URL");
@@ -137,14 +137,14 @@ namespace GameplayIngredients.Comments.Editor
                         EditorGUILayout.PropertyField(targets);
                     }
 
-                    if(replyIndex >= 0)
+                    if (replyIndex >= 0)
                     {
                         EditorGUILayout.PropertyField(changeType);
                         EditorGUILayout.PropertyField(changeState);
                         EditorGUILayout.PropertyField(changePriority);
                     }
 
-                    if(changeType.boolValue || replyIndex == -1)
+                    if (changeType.boolValue || replyIndex == -1)
                         EditorGUILayout.PropertyField(type);
                     if (changeState.boolValue || replyIndex == -1)
                         EditorGUILayout.PropertyField(state);
@@ -179,7 +179,7 @@ namespace GameplayIngredients.Comments.Editor
                         GUILayout.Label($"<b>From:</b> <color={(from.stringValue == CommentsWindow.user ? "lime" : "white")}><b>{from.stringValue}</b></color>", Styles.from);
                         GUILayout.FlexibleSpace();
 
-                        if (replyIndex > -1 && from.stringValue == CommentsWindow.user 
+                        if (replyIndex > -1 && from.stringValue == CommentsWindow.user
                             && GUILayout.Button(Styles.edit, Styles.miniButton, GUILayout.Width(32)))
                         {
                             editMessagePath = message.propertyPath;
@@ -229,8 +229,8 @@ namespace GameplayIngredients.Comments.Editor
                         EditorGUI.EndDisabledGroup();
                     }
 
-                    if(replyIndex == -1 
-                        || changeType.boolValue 
+                    if (replyIndex == -1
+                        || changeType.boolValue
                         || changeState.boolValue
                         || changePriority.boolValue)
                     {
@@ -253,7 +253,7 @@ namespace GameplayIngredients.Comments.Editor
                     }
 
 
-                    
+
                 }
             }
             GUI.contentColor = Color.white;
@@ -401,20 +401,20 @@ namespace GameplayIngredients.Comments.Editor
 
                 SetWhiteBG(miniButton);
 
-                edit = new GUIContent(EditorGUIUtility.Load("Packages/net.peeweek.gameplay-ingredients/Icons/GUI/edit.png") as Texture);
-                reply = new GUIContent(EditorGUIUtility.Load("Packages/net.peeweek.gameplay-ingredients/Icons/GUI/reply.png") as Texture);
+                edit = new GUIContent(EditorGUIUtility.Load("Packages/com.stylovich.gameplay-ingredients/Icons/GUI/edit.png") as Texture);
+                reply = new GUIContent(EditorGUIUtility.Load("Packages/com.stylovich.gameplay-ingredients/Icons/GUI/reply.png") as Texture);
             }
 
             static Texture2D flat;
 
             static void SetWhiteBG(GUIStyle style)
             {
-                if(flat == null)
+                if (flat == null)
                 {
                     flat = new Texture2D(1, 1, DefaultFormat.LDR, TextureCreationFlags.None);
                     flat.SetPixel(0, 0, new Color(0.5f, 0.5f, 0.5f, 0.3f));
                     flat.Apply();
-                }    
+                }
                 SetBGTexture(style, flat);
             }
             static void SetBGTexture(GUIStyle style, Texture2D texture)

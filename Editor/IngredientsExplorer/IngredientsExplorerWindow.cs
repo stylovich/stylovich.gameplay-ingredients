@@ -30,7 +30,7 @@ namespace GameplayIngredients.Editor
         }
 
         const int PANEL_WIDTH = 400;
-        const int MIN_WIDTH = PANEL_WIDTH+60;
+        const int MIN_WIDTH = PANEL_WIDTH + 60;
 
         const string kPref = "GameplayIngredients.IngredientsExplorer.ShowPanel";
         static bool showPanel
@@ -40,14 +40,14 @@ namespace GameplayIngredients.Editor
         }
 
         public static bool visible = false;
-        public static IngredientsExplorerWindow instance 
-        { 
-            get 
-            { 
-                if (s_Instance == null) 
-                    s_Instance = GetWindow<IngredientsExplorerWindow>(); 
-                return s_Instance; 
-            } 
+        public static IngredientsExplorerWindow instance
+        {
+            get
+            {
+                if (s_Instance == null)
+                    s_Instance = GetWindow<IngredientsExplorerWindow>();
+                return s_Instance;
+            }
         }
 
         [SerializeField]
@@ -112,26 +112,29 @@ namespace GameplayIngredients.Editor
                 if (GUI.Button(buttonRect, "Filter", EditorStyles.toolbarDropDown))
                 {
                     GenericMenu menu = new GenericMenu();
-                    menu.AddItem(new GUIContent("Filter Selected"), false, () => {
+                    menu.AddItem(new GUIContent("Filter Selected"), false, () =>
+                    {
                         m_TreeView.SetAutoFilter(false);
                         m_TreeView.SetObjectFilter(Selection.activeGameObject);
                     });
-                    menu.AddItem(new GUIContent("Clear Filter"), false, () => {
+                    menu.AddItem(new GUIContent("Clear Filter"), false, () =>
+                    {
                         m_TreeView.SetAutoFilter(false);
                         m_TreeView.SetObjectFilter(null);
                         m_TreeView.SetStringFilter(string.Empty);
                     });
                     menu.AddSeparator("");
-                    menu.AddItem(new GUIContent("Automatic Filter"), m_TreeView.AutoFilter, () => {
+                    menu.AddItem(new GUIContent("Automatic Filter"), m_TreeView.AutoFilter, () =>
+                    {
                         m_TreeView.ToggleAutoFilter();
                     });
                     menu.DropDown(buttonRect);
                 }
-                if(position.width > MIN_WIDTH)
+                if (position.width > MIN_WIDTH)
                     showPanel = GUILayout.Toggle(showPanel, EditorGUIUtility.IconContent("UnityEditor.InspectorWindow"), EditorStyles.toolbarButton);
 
             }
-            using(new GUILayout.HorizontalScope())
+            using (new GUILayout.HorizontalScope())
             {
                 Rect r = GUILayoutUtility.GetRect(position.width - PANEL_WIDTH, position.height - tbHeight);
                 m_TreeView.OnGUI(r);
@@ -159,11 +162,11 @@ namespace GameplayIngredients.Editor
 
         void PanelGUI()
         {
-            using(new GUILayout.HorizontalScope())
+            using (new GUILayout.HorizontalScope())
             {
                 Rect r = GUILayoutUtility.GetRect(1, 1, GUILayout.Width(1), GUILayout.ExpandHeight(true));
                 EditorGUI.DrawRect(r, Color.black);
-                using(new GUILayout.VerticalScope(GUILayout.Width(PANEL_WIDTH)))
+                using (new GUILayout.VerticalScope(GUILayout.Width(PANEL_WIDTH)))
                 {
                     s_Editor?.DrawHeader();
 
@@ -227,7 +230,7 @@ namespace GameplayIngredients.Editor
             var root = new List<CallTreeNode>();
             nodeRoots.Add("Erroneous Callables", root);
 
-            foreach(var callable in erroneous)
+            foreach (var callable in erroneous)
             {
                 root.Add(new CallTreeNode(callable, CallTreeNodeType.Callable, callable.name));
             }
@@ -248,7 +251,7 @@ namespace GameplayIngredients.Editor
             if (list.Count == 0)
                 return;
 
-            foreach(var rig in list)
+            foreach (var rig in list)
             {
                 if (!allRigs.ContainsKey(rig.updateMode))
                     allRigs.Add(rig.updateMode, new Dictionary<int, List<Rig>>());
@@ -262,13 +265,13 @@ namespace GameplayIngredients.Editor
             // Construct tree
             nodeRoots.Add("Rigs", new List<CallTreeNode>());
             var listRoot = nodeRoots["Rigs"];
-            foreach(var updateMode in allRigs.Keys)
+            foreach (var updateMode in allRigs.Keys)
             {
                 var group = GetGroupNode($"Update Mode: {updateMode}");
-                foreach(var index in allRigs[updateMode].Keys.OrderBy(o => o))
+                foreach (var index in allRigs[updateMode].Keys.OrderBy(o => o))
                 {
                     var indexGroup = GetGroupNode($"Priority : #{index}");
-                    foreach(var rig in allRigs[updateMode][index])
+                    foreach (var rig in allRigs[updateMode][index])
                     {
                         indexGroup.Children.Add(new CallTreeNode(rig, CallTreeNodeType.Rig, $"{rig.gameObject.name} ({rig.GetType().Name})"));
                     }
@@ -278,7 +281,7 @@ namespace GameplayIngredients.Editor
             }
         }
 
-        void AddToCategory<T>(string name) where T:MonoBehaviour
+        void AddToCategory<T>(string name) where T : MonoBehaviour
         {
             var list = Resources.FindObjectsOfTypeAll<T>().ToList();
 
@@ -294,12 +297,12 @@ namespace GameplayIngredients.Editor
                     continue;
 
                 var stack = new Stack<object>();
-                
-                if(typeof(T) == typeof(StateMachine))
+
+                if (typeof(T) == typeof(StateMachine))
                 {
                     listRoot.Add(GetStateMachineNode(item as StateMachine, stack));
                 }
-                else if(typeof(T) == typeof(SendMessageAction))
+                else if (typeof(T) == typeof(SendMessageAction))
                 {
                     listRoot.Add(GetMessageNode(item as SendMessageAction, stack));
                 }
@@ -312,7 +315,7 @@ namespace GameplayIngredients.Editor
 
         CallTreeNode GetNode(MonoBehaviour bhv, Stack<object> stack)
         {
-            if(!stack.Contains(bhv))
+            if (!stack.Contains(bhv))
             {
                 stack.Push(bhv);
                 var rootNode = new CallTreeNode(bhv, GetType(bhv), $"{bhv.gameObject.name} ({bhv.GetType().Name})");
@@ -390,9 +393,9 @@ namespace GameplayIngredients.Editor
             {
                 stack.Push(msg);
                 var rootNode = new CallTreeNode(msg, CallTreeNodeType.Message, $"{msg.message} : ({msg.gameObject.name}.{msg.Name})");
-                var all = Resources.FindObjectsOfTypeAll<OnMessageEvent>().Where(o=> o.MessageName == msg.message).ToList();
+                var all = Resources.FindObjectsOfTypeAll<OnMessageEvent>().Where(o => o.MessageName == msg.message).ToList();
 
-                foreach(var evt in all)
+                foreach (var evt in all)
                 {
                     rootNode.Children.Add(GetNode(evt, stack));
                 }
@@ -513,10 +516,10 @@ namespace GameplayIngredients.Editor
 
             public bool Filter(GameObject go, string filter)
             {
-                bool keep = (go == null || this.Target.gameObject == go) 
+                bool keep = (go == null || this.Target.gameObject == go)
                     && (string.IsNullOrEmpty(filter) ? true : this.Name.Contains(filter));
 
-                if(!keep)
+                if (!keep)
                 {
                     foreach (var node in Children)
                         keep = keep || node.Filter(go, filter);
@@ -570,7 +573,7 @@ namespace GameplayIngredients.Editor
                 if (AutoFilter)
                 {
                     Selection.selectionChanged += UpdateAutoFilter;
-                    if(this.HasSelection())
+                    if (this.HasSelection())
                     {
                         SetObjectFilter(m_Bindings[this.GetSelection()[0]].Target.gameObject);
                     }
@@ -603,7 +606,7 @@ namespace GameplayIngredients.Editor
                 m_Bindings.Clear();
                 var treeRoot = new TreeViewItem(++id, -1, "~Root");
 
-                foreach(var kvp in m_Roots)
+                foreach (var kvp in m_Roots)
                 {
                     if (kvp.Value == null || kvp.Value.Count == 0)
                         continue;
@@ -641,7 +644,7 @@ namespace GameplayIngredients.Editor
                 item.icon = GetIcon(node.Target, node.Type);
                 m_Bindings.Add(id, node);
 
-                foreach(var child in node.Children)
+                foreach (var child in node.Children)
                 {
                     // If this is a group, filter all its direct children
                     if (node.Type == CallTreeNodeType.Group && !child.Filter(m_filter, m_StringFilter))
@@ -654,14 +657,14 @@ namespace GameplayIngredients.Editor
 
             Texture2D GetIcon(MonoBehaviour bhv, CallTreeNodeType type)
             {
-                if(bhv != null && type != CallTreeNodeType.Callable)
+                if (bhv != null && type != CallTreeNodeType.Callable)
                 {
                     var texture = EditorGUIUtility.ObjectContent(bhv, bhv.GetType()).image;
                     if (texture != null)
                         return texture as Texture2D;
                 }
 
-                switch(type)
+                switch (type)
                 {
                     default:
                     case CallTreeNodeType.Group:
@@ -694,7 +697,7 @@ namespace GameplayIngredients.Editor
 
                 base.SelectionChanged(selectedIds);
                 if (selectedIds.Count > 0 && m_Bindings.ContainsKey(selectedIds[0]))
-                    if(m_Bindings[selectedIds[0]].Target != null)
+                    if (m_Bindings[selectedIds[0]].Target != null)
                     {
                         var node = m_Bindings[selectedIds[0]];
 
@@ -733,7 +736,7 @@ namespace GameplayIngredients.Editor
 
                 static Texture2D Icon(string path)
                 {
-                    return AssetDatabase.LoadAssetAtPath<Texture2D>($"Packages/net.peeweek.gameplay-ingredients/Icons/{path}");
+                    return AssetDatabase.LoadAssetAtPath<Texture2D>($"Packages/com.stylovich.gameplay-ingredients/Icons/{path}");
                 }
             }
         }

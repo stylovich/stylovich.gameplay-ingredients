@@ -5,7 +5,7 @@ namespace GameplayIngredients
 {
     [HelpURL(Help.URL + "counters")]
     [AddComponentMenu(ComponentMenu.counterPath + "Counter")]
-    [AdvancedHierarchyIcon("Packages/net.peeweek.gameplay-ingredients/Icons/Misc/ic-counter.png")]
+    [AdvancedHierarchyIcon("Packages/com.stylovich.gameplay-ingredients/Icons/Misc/ic-counter.png")]
     [DeclareBoxGroup("Default Value", Title = "Default Value")]
 
     public class Counter : GameplayIngredientsBehaviour
@@ -18,7 +18,7 @@ namespace GameplayIngredients
         }
         [Group("Default Value")]
         public ValueSourceType ValueSource = ValueSourceType.Property;
-        [Group("Default Value"),ShowIf("isValueProperty")]
+        [Group("Default Value"), ShowIf("isValueProperty")]
         public int Value = 1;
 
         [Group("Default Value"), ShowIf("isValueGameSave")]
@@ -75,7 +75,7 @@ namespace GameplayIngredients
 
         public void SetValue(int newValue, GameObject instigator = null)
         {
-            if(newValue != CurrentValue)
+            if (newValue != CurrentValue)
             {
                 CurrentValue = newValue;
                 Callable.Call(OnValueChanged, instigator);

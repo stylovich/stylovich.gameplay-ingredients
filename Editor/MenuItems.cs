@@ -79,7 +79,7 @@ namespace GameplayIngredients.Editor
 
             // Expand by pinging the first object
             EditorGUIUtility.PingObject(selected[0]);
-            
+
         }
 
         [MenuItem(kGroupMenuString, priority = kGroupMenuIndex, validate = true)]
@@ -89,7 +89,7 @@ namespace GameplayIngredients.Editor
         }
 
 
-        [MenuItem(kUnGroupMenuString, priority = kGroupMenuIndex+1, validate = false)]
+        [MenuItem(kUnGroupMenuString, priority = kGroupMenuIndex + 1, validate = false)]
         static void UnGroup()
         {
             if (Selection.gameObjects.Length == 0)
@@ -97,11 +97,11 @@ namespace GameplayIngredients.Editor
 
             var selected = Selection.gameObjects;
             List<Transform> oldParents = new List<Transform>();
-            foreach(var go in selected)
+            foreach (var go in selected)
             {
-                if(go.transform.parent != null)
+                if (go.transform.parent != null)
                 {
-                    if(!oldParents.Contains(go.transform.parent))
+                    if (!oldParents.Contains(go.transform.parent))
                         oldParents.Add(go.transform.parent);
 
                     go.transform.parent = go.transform.parent.parent;
@@ -111,10 +111,10 @@ namespace GameplayIngredients.Editor
             List<GameObject> toDelete = new List<GameObject>();
 
             // Cleanup old parents
-            foreach(var parent in oldParents)
+            foreach (var parent in oldParents)
             {
                 var go = parent.gameObject;
-                if(parent.childCount == 0 && parent.GetComponents<Component>().Length == 1) // if no more children and only transform/rectTransform
+                if (parent.childCount == 0 && parent.GetComponents<Component>().Length == 1) // if no more children and only transform/rectTransform
                 {
                     toDelete.Add(go);
                 }
@@ -122,10 +122,10 @@ namespace GameplayIngredients.Editor
 
             foreach (var trash in toDelete)
                 GameObject.DestroyImmediate(trash);
-            
+
         }
 
-        [MenuItem(kUnGroupMenuString, priority = kGroupMenuIndex+1, validate = true)]
+        [MenuItem(kUnGroupMenuString, priority = kGroupMenuIndex + 1, validate = true)]
         static bool UnGroupCheck()
         {
             return (Selection.gameObjects.Length > 0);
@@ -244,7 +244,7 @@ namespace GameplayIngredients.Editor
         [MenuItem("Help/Gameplay Ingredients/OpenUPM page")]
         static void OpenUPM()
         {
-            Application.OpenURL("https://openupm.com/packages/net.peeweek.gameplay-ingredients/");
+            Application.OpenURL("https://openupm.com/Packages/com.stylovich.gameplay-ingredients/");
         }
         #endregion
     }

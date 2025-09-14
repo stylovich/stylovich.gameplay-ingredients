@@ -119,7 +119,7 @@ public abstract class IngredientEditor : PingableEditor
         static Texture2D bgTexture;
         static Styles()
         {
-            callableIconContent = new GUIContent(AssetDatabase.LoadAssetAtPath<Texture2D>("Packages/net.peeweek.gameplay-ingredients/Icons/Misc/ic-callable.png"));
+            callableIconContent = new GUIContent(AssetDatabase.LoadAssetAtPath<Texture2D>("Packages/com.stylovich.gameplay-ingredients/Icons/Misc/ic-callable.png"));
 
             drawDebugButton = new GUIStyle(EditorStyles.miniButton);
             drawDebugButton.margin = new RectOffset(1, 1, 1, 1);
@@ -144,7 +144,7 @@ public abstract class IngredientEditor : PingableEditor
             breadCrumbBar.focused.background = bgTexture;
             breadCrumbBar.hover.background = bgTexture;
 
-            var bc = AssetDatabase.LoadAssetAtPath<Texture2D>("Packages/net.peeweek.gameplay-ingredients/Icons/BreadCrumb.png");
+            var bc = AssetDatabase.LoadAssetAtPath<Texture2D>("Packages/com.stylovich.gameplay-ingredients/Icons/BreadCrumb.png");
             breadCrumb = new GUIStyle(EditorStyles.boldLabel);
             breadCrumb.fixedHeight = 22;
             breadCrumb.border = new RectOffset(8, 28, 0, 0);

@@ -39,7 +39,7 @@ namespace GameplayIngredients.Editor
             foreach (var type in types)
             {
                 CallableAttribute attr = type.GetCustomAttribute<CallableAttribute>();
-                
+
                 string path = string.Empty;
                 if (attr != null)
                     path += attr.category + "/";
@@ -87,13 +87,13 @@ namespace GameplayIngredients.Editor
                 Texture icon = null;
                 CallableAttribute attr = kvp.Value.GetCustomAttribute<CallableAttribute>();
                 if (attr != null)
-                    icon = AssetDatabase.LoadAssetAtPath<Texture2D>($"Packages/net.peeweek.gameplay-ingredients/Icons/{attr.iconPath}");
+                    icon = AssetDatabase.LoadAssetAtPath<Texture2D>($"Packages/com.stylovich.gameplay-ingredients/Icons/{attr.iconPath}");
 
-                tree.Add(new CallableElement(i, kvp.Value, icon, () => 
+                tree.Add(new CallableElement(i, kvp.Value, icon, () =>
                 {
                     addNextComponentInfo.newComponentType = kvp.Value;
                     EditorApplication.delayCall += AddCallable;
-                } ));
+                }));
             }
 
             tree.Add(new CallableElement(1, null, null, () =>
@@ -123,7 +123,7 @@ namespace GameplayIngredients.Editor
             public CallableElement(int level, Type type, Texture icon = null, Action spawnCallback = null)
             {
                 this.level = level;
-                
+
                 if (type != null)
                 {
                     if (icon == null)
@@ -153,7 +153,7 @@ namespace GameplayIngredients.Editor
 
         static class Styles
         {
-            public static Texture2D icon = AssetDatabase.LoadAssetAtPath<Texture2D>("Packages/net.peeweek.gameplay-ingredients/Icons/Misc/ic-callable.png");
+            public static Texture2D icon = AssetDatabase.LoadAssetAtPath<Texture2D>("Packages/com.stylovich.gameplay-ingredients/Icons/Misc/ic-callable.png");
         }
 
 

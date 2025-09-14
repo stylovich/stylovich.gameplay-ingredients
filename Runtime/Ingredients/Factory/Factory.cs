@@ -8,7 +8,7 @@ namespace GameplayIngredients
 {
     [HelpURL(Help.URL + "factory")]
     [AddComponentMenu(ComponentMenu.factoryPath + "Factory")]
-    [AdvancedHierarchyIcon("Packages/net.peeweek.gameplay-ingredients/Icons/Misc/ic-Factory.png")]
+    [AdvancedHierarchyIcon("Packages/com.stylovich.gameplay-ingredients/Icons/Misc/ic-Factory.png")]
     public class Factory : GameplayIngredientsBehaviour
     {
         public enum BlueprintSelectionMode
@@ -67,15 +67,15 @@ namespace GameplayIngredients
 
         private void OnEnable()
         {
-            if(m_Instances != null)
-        	    m_Instances.RemoveAll(item => item == null);
+            if (m_Instances != null)
+                m_Instances.RemoveAll(item => item == null);
         }
 
         private void OnDestroy()
         {
-            if(ReapInstancesOnDestroy && m_Instances != null)
+            if (ReapInstancesOnDestroy && m_Instances != null)
             {
-                foreach(var instance in m_Instances)
+                foreach (var instance in m_Instances)
                 {
                     if (instance != null)
                         Destroy(instance);
@@ -90,7 +90,7 @@ namespace GameplayIngredients
 
         public void SetTarget(GameObject target)
         {
-            if(target != null)
+            if (target != null)
             {
                 SpawnTarget = target;
             }
@@ -106,7 +106,7 @@ namespace GameplayIngredients
 
         public void Spawn()
         {
-            if(SpawnTarget == null || FactoryBlueprints == null  || FactoryBlueprints.Length == 0)
+            if (SpawnTarget == null || FactoryBlueprints == null || FactoryBlueprints.Length == 0)
             {
                 Debug.LogWarning(string.Format("Factory '{0}' : Cannot spawn as there are no spawn target or factory blueprints", gameObject.name));
                 return;
@@ -115,7 +115,7 @@ namespace GameplayIngredients
             if (m_Instances == null)
                 m_Instances = new List<GameObject>();
 
-            if(m_Instances.Count == MaxInstances && SacrificeOldest)
+            if (m_Instances.Count == MaxInstances && SacrificeOldest)
             {
                 var oldest = m_Instances[0];
                 m_Instances.RemoveAt(0);
@@ -126,12 +126,12 @@ namespace GameplayIngredients
             {
                 GameObject newInstance = Spawn(SelectBlueprint(), SpawnTarget);
 
-                switch(spawnLocation)
+                switch (spawnLocation)
                 {
                     case SpawnLocation.Default:
                         break;
                     case SpawnLocation.SameSceneAsTarget:
-                        UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene( newInstance, SpawnTarget.scene);
+                        UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(newInstance, SpawnTarget.scene);
                         break;
                     case SpawnLocation.ChildOfTarget:
                         newInstance.transform.parent = SpawnTarget.transform;
@@ -142,7 +142,7 @@ namespace GameplayIngredients
                 }
 
                 m_Instances.Add(newInstance);
-                
+
                 Callable.Call(OnSpawn, newInstance);
             }
 
@@ -150,12 +150,12 @@ namespace GameplayIngredients
 
         private void LateUpdate()
         {
-            if(m_Instances != null)
+            if (m_Instances != null)
             {
                 List<int> todelete = new List<int>();
-                for(int i = 0; i < m_Instances.Count; i++)
+                for (int i = 0; i < m_Instances.Count; i++)
                 {
-                    if(m_Instances[i] == null)
+                    if (m_Instances[i] == null)
                     {
                         todelete.Add(i);
                     }
@@ -165,13 +165,13 @@ namespace GameplayIngredients
                 {
                     m_Instances.RemoveAt(index);
 
-                    if(RespawnTarget)
+                    if (RespawnTarget)
                         AddRespawnCoroutine();
                 }
             }
         }
 
-        private List<Coroutine> m_RespawnCoroutines; 
+        private List<Coroutine> m_RespawnCoroutines;
 
         private void AddRespawnCoroutine()
         {
@@ -203,13 +203,13 @@ namespace GameplayIngredients
 
         private GameObject SelectBlueprint()
         {
-            if(FactoryBlueprints == null || FactoryBlueprints.Length == 0)
+            if (FactoryBlueprints == null || FactoryBlueprints.Length == 0)
             {
                 Debug.LogError($"Factory '{gameObject.name}' could not spawn anything as there are no blueprints set up");
                 return null;
             }
 
-            switch(blueprintSelecionMode)
+            switch (blueprintSelecionMode)
             {
                 default:
                 case BlueprintSelectionMode.Random:
@@ -232,7 +232,7 @@ namespace GameplayIngredients
 
         private int Shuffle(int i)
         {
-            if(shuffleIndices == null || shuffleIndices.Count != FactoryBlueprints.Length)
+            if (shuffleIndices == null || shuffleIndices.Count != FactoryBlueprints.Length)
             {
                 shuffleIndices = Enumerable.Range(0, FactoryBlueprints.Length).OrderBy(x => Random.value).ToList();
             }
@@ -243,7 +243,7 @@ namespace GameplayIngredients
         {
             var gsm = Manager.Get<GameSaveManager>();
             int index = -1;
-            if(gsm.HasInt(gameSaveVariableName, gameSaveLocation))
+            if (gsm.HasInt(gameSaveVariableName, gameSaveLocation))
             {
                 index = gsm.GetInt(gameSaveVariableName, gameSaveLocation);
             }

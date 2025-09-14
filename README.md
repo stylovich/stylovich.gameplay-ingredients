@@ -1,4 +1,4 @@
-![](https://raw.githubusercontent.com/peeweek/net.peeweek.gameplay-ingredients/master/Documentation%7E/Images/site-banner.png)
+![](https://raw.githubusercontent.com/stylovich/stylovich.gameplay-ingredients/master/Documentation~/Images/site-banner.png)
 
 > Note: This repository is a fork of [peeweek/net.peeweek.gameplay-ingredients](https://github.com/peeweek/net.peeweek.gameplay-ingredients).
 > NaughtyAttributes have been migrated to [Tri Inspector](https://github.com/codewriter-packages/Tri-Inspector).

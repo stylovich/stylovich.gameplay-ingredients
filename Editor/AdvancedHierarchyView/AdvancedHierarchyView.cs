@@ -58,42 +58,42 @@ namespace GameplayIngredients.Editor
 
         static void InitializeTypes()
         {
-            RegisterComponentType( typeof(MonoBehaviour), "cs Script Icon");
-            RegisterComponentType( typeof(Camera), "Camera Icon");
-            RegisterComponentType( typeof(MeshRenderer), "MeshRenderer Icon");
-            RegisterComponentType( typeof(SkinnedMeshRenderer), "SkinnedMeshRenderer Icon");
-            RegisterComponentType( typeof(BoxCollider), "BoxCollider Icon");
-            RegisterComponentType( typeof(SphereCollider), "SphereCollider Icon");
-            RegisterComponentType( typeof(CapsuleCollider), "CapsuleCollider Icon");
-            RegisterComponentType( typeof(MeshCollider), "MeshCollider Icon");
-            RegisterComponentType( typeof(AudioSource), "AudioSource Icon");
-            RegisterComponentType( typeof(Animation), "Animation Icon");
-            RegisterComponentType( typeof(Animator), "Animator Icon");
-            RegisterComponentType( typeof(PlayableDirector), "PlayableDirector Icon");
-            RegisterComponentType( typeof(Light), "Light Icon");
-            RegisterComponentType( typeof(LightProbeGroup), "LightProbeGroup Icon");
-            RegisterComponentType( typeof(LightProbeProxyVolume), "LightProbeProxyVolume Icon");
-            RegisterComponentType( typeof(ReflectionProbe), "ReflectionProbe Icon");
-            RegisterComponentType( typeof(VisualEffect), "VisualEffect Icon");
-            RegisterComponentType( typeof(ParticleSystem), "ParticleSystem Icon");
-            RegisterComponentType( typeof(Canvas), "Canvas Icon");
-            RegisterComponentType( typeof(Image), "Image Icon");
-            RegisterComponentType( typeof(Text), "Text Icon");
-            RegisterComponentType( typeof(Button), "Button Icon");
-            RegisterComponentType( typeof(Folder), "Folder Icon");
-            RegisterComponentType( typeof(SceneComment), "Packages/net.peeweek.gameplay-ingredients/Icons/Misc/ic-comment.png");
+            RegisterComponentType(typeof(MonoBehaviour), "cs Script Icon");
+            RegisterComponentType(typeof(Camera), "Camera Icon");
+            RegisterComponentType(typeof(MeshRenderer), "MeshRenderer Icon");
+            RegisterComponentType(typeof(SkinnedMeshRenderer), "SkinnedMeshRenderer Icon");
+            RegisterComponentType(typeof(BoxCollider), "BoxCollider Icon");
+            RegisterComponentType(typeof(SphereCollider), "SphereCollider Icon");
+            RegisterComponentType(typeof(CapsuleCollider), "CapsuleCollider Icon");
+            RegisterComponentType(typeof(MeshCollider), "MeshCollider Icon");
+            RegisterComponentType(typeof(AudioSource), "AudioSource Icon");
+            RegisterComponentType(typeof(Animation), "Animation Icon");
+            RegisterComponentType(typeof(Animator), "Animator Icon");
+            RegisterComponentType(typeof(PlayableDirector), "PlayableDirector Icon");
+            RegisterComponentType(typeof(Light), "Light Icon");
+            RegisterComponentType(typeof(LightProbeGroup), "LightProbeGroup Icon");
+            RegisterComponentType(typeof(LightProbeProxyVolume), "LightProbeProxyVolume Icon");
+            RegisterComponentType(typeof(ReflectionProbe), "ReflectionProbe Icon");
+            RegisterComponentType(typeof(VisualEffect), "VisualEffect Icon");
+            RegisterComponentType(typeof(ParticleSystem), "ParticleSystem Icon");
+            RegisterComponentType(typeof(Canvas), "Canvas Icon");
+            RegisterComponentType(typeof(Image), "Image Icon");
+            RegisterComponentType(typeof(Text), "Text Icon");
+            RegisterComponentType(typeof(Button), "Button Icon");
+            RegisterComponentType(typeof(Folder), "Folder Icon");
+            RegisterComponentType(typeof(SceneComment), "Packages/com.stylovich.gameplay-ingredients/Icons/Misc/ic-comment.png");
 
             foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
                 try
                 {
                     var types = assembly.GetTypes();
-                    foreach(var type in types)
+                    foreach (var type in types)
                     {
-                        if(type.IsSubclassOf(typeof(MonoBehaviour)) && !type.IsAbstract)
+                        if (type.IsSubclassOf(typeof(MonoBehaviour)) && !type.IsAbstract)
                         {
                             var attrib = type.GetCustomAttribute<AdvancedHierarchyIconAttribute>();
-                            if(attrib != null)
+                            if (attrib != null)
                             {
                                 RegisterComponentType(type, attrib.icon);
                             }
@@ -128,18 +128,18 @@ namespace GameplayIngredients.Editor
             fullRect.xMax = EditorGUIUtility.currentViewWidth;
             GameObject o = EditorUtility.InstanceIDToObject(instanceID) as GameObject;
             if (o == null) return;
-            
+
             var c = GUI.color;
 
             bool isFolder = o.GetComponent<Folder>() != null;
             bool isComment = o.GetComponent<SceneComment>() != null;
 
-            if(isFolder || isComment)
+            if (isFolder || isComment)
             {
                 fullRect.xMin += 28 + 14 * GetObjectDepth(o.transform);
                 fullRect.width = 16;
 
-                EditorGUI.DrawRect(fullRect, EditorGUIUtility.isProSkin? Styles.proBackground : Styles.personalBackground);
+                EditorGUI.DrawRect(fullRect, EditorGUIUtility.isProSkin ? Styles.proBackground : Styles.personalBackground);
                 if (isFolder)
                     DrawIcon(fullRect, Contents.GetContent(typeof(Folder)), o.GetComponent<Folder>().Color);
                 else
@@ -155,14 +155,14 @@ namespace GameplayIngredients.Editor
 
                 foreach (var type in s_Definitions.Keys)
                 {
-                    if(AdvancedHierarchyPreferences.IsVisible(type) && o.GetComponents(type).Length > 0) 
+                    if (AdvancedHierarchyPreferences.IsVisible(type) && o.GetComponents(type).Length > 0)
                         selectionRect = DrawIcon(selectionRect, Contents.GetContent(type), Color.white);
                 }
             }
             GUI.color = c;
         }
 
-        static int GetObjectDepth(Transform t, int depth=0)
+        static int GetObjectDepth(Transform t, int depth = 0)
         {
             if (t.parent == null)
                 return depth;
@@ -170,7 +170,7 @@ namespace GameplayIngredients.Editor
                 return GetObjectDepth(t.parent, depth + 1);
         }
 
-        
+
         static Rect DrawIcon(Rect rect, GUIContent content, Color color, int size = 16)
         {
             GUI.color = color;
@@ -200,7 +200,7 @@ namespace GameplayIngredients.Editor
             public static GUIContent GetContent(Type t)
             {
                 if (!s_Icons.ContainsKey(t) && s_Definitions.ContainsKey(t))
-                    AddIcon(t,s_Definitions[t]);
+                    AddIcon(t, s_Definitions[t]);
 
                 return s_Icons[t];
             }

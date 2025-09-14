@@ -19,7 +19,7 @@ namespace GameplayIngredients.Comments.Editor
             SetDefault();
             firstTimeEdit = true;
         }
-         
+
         public void SetDefault()
         {
             m_Comment.title = "New Comment";
@@ -33,7 +33,7 @@ namespace GameplayIngredients.Comments.Editor
         [MenuItem("Assets/Create/Comment")]
         static void CreateAsset()
         {
-            AssetFactory.CreateAssetInProjectWindow<CommentAsset>("Packages/net.peeweek.gameplay-ingredients/Icons/Misc/ic-comment.png", "New Comment.asset");
+            AssetFactory.CreateAssetInProjectWindow<CommentAsset>("Packages/com.stylovich.gameplay-ingredients/Icons/Misc/ic-comment.png", "New Comment.asset");
         }
 
     }

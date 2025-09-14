@@ -42,16 +42,17 @@ namespace GameplayIngredients.Editor
                         Object[] droppedObjects = DragAndDrop.objectReferences;
                         foreach (Object obj in droppedObjects)
                         {
-                            if(obj != null && obj is GameObject)
+                            if (obj != null && obj is GameObject)
                             {
                                 DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
                                 if (currentEvent.type == EventType.DragPerform)
                                 {
                                     GenericMenu m = new GenericMenu();
                                     var callables = (obj as GameObject).GetComponents<Callable>();
-                                    foreach(var c in callables)
+                                    foreach (var c in callables)
                                     {
-                                        m.AddItem(new GUIContent($"{c.Name} ({c.GetType().Name})"), false, () => {
+                                        m.AddItem(new GUIContent($"{c.Name} ({c.GetType().Name})"), false, () =>
+                                        {
                                             list.serializedProperty.serializedObject.Update();
                                             list.serializedProperty.arraySize++;
                                             int arrayEnd = list.serializedProperty.arraySize - 1;
@@ -117,7 +118,7 @@ namespace GameplayIngredients.Editor
 
         static class Styles
         {
-            public static Texture2D callableIcon = AssetDatabase.LoadAssetAtPath<Texture2D>("Packages/net.peeweek.gameplay-ingredients/Icons/Misc/ic-callable.png");
+            public static Texture2D callableIcon = AssetDatabase.LoadAssetAtPath<Texture2D>("Packages/com.stylovich.gameplay-ingredients/Icons/Misc/ic-callable.png");
         }
     }
 
@@ -125,7 +126,7 @@ namespace GameplayIngredients.Editor
     {
         public static void AddCallable(this GameObject gameObject, Component component, string propertyName, System.Type t)
         {
-            var field = component.GetType().GetFields(BindingFlags.Public| BindingFlags.Instance | BindingFlags.NonPublic).Where(f => f.Name == propertyName).FirstOrDefault();
+            var field = component.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic).Where(f => f.Name == propertyName).FirstOrDefault();
             var val = field.GetValue(component) as Callable[];
 
             if (t != null && typeof(Callable).IsAssignableFrom(t))

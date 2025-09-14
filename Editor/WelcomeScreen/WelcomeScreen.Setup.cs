@@ -61,7 +61,7 @@ namespace GameplayIngredients.Editor
             GUILayout.Space(12);
             if (GUILayout.Button("Create/Replace", GUILayout.Width(180), GUILayout.Height(32)))
             {
-                if(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/UIEventManager.prefab") == null 
+                if (AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/UIEventManager.prefab") == null
                     || EditorUtility.DisplayDialog("Prefab already present", "UIEventManager already exists, overwrite?", "Yes", "No"))
                 {
                     var go = UIEventManager.CreateManagerObject();
@@ -91,15 +91,15 @@ While this is not mandatory we advise you to create it in order to be able to mo
                 if (GUILayout.Button("Create GameplayIngredientsSettings Asset"))
                 {
                     bool create = true;
-                    if(System.IO.File.Exists(Application.dataPath +"/../"+ kSettingsAssetPath))
+                    if (System.IO.File.Exists(Application.dataPath + "/../" + kSettingsAssetPath))
                     {
                         if (!EditorUtility.DisplayDialog("GameplayIngredientsSettings Asset Overwrite", "A GameplayIngredientsSettings Asset already exists, do you want to overwrite it?", "Yes", "No"))
                             create = false;
                     }
 
-                    if(create)
+                    if (create)
                     {
-                        if(!System.IO.Directory.Exists(Application.dataPath+"/Resources"))
+                        if (!System.IO.Directory.Exists(Application.dataPath + "/Resources"))
                             AssetDatabase.CreateFolder("Assets", "Resources");
 
                         GameplayIngredientsSettings asset = Instantiate<GameplayIngredientsSettings>(GameplayIngredientsSettings.defaultSettings);
@@ -124,11 +124,11 @@ Please select a package depending on your project's render loop. If you do not k
                 using (new GUILayout.VerticalScope())
                 {
                     if (GUILayout.Button("Built-in Renderer"))
-                        AssetDatabase.ImportPackage("Packages/net.peeweek.gameplay-ingredients/StarterAssets/GameplayIngredients-Starter-BuiltInRenderer.unitypackage", false);
+                        AssetDatabase.ImportPackage("Packages/com.stylovich.gameplay-ingredients/StarterAssets/GameplayIngredients-Starter-BuiltInRenderer.unitypackage", false);
                     if (GUILayout.Button("HD Render Pipeline"))
-                        AssetDatabase.ImportPackage("Packages/net.peeweek.gameplay-ingredients/StarterAssets/GameplayIngredients-Starter-HDRP.unitypackage", false);
+                        AssetDatabase.ImportPackage("Packages/com.stylovich.gameplay-ingredients/StarterAssets/GameplayIngredients-Starter-HDRP.unitypackage", false);
                     if (GUILayout.Button("Universal Render Pipeline"))
-                        AssetDatabase.ImportPackage("Packages/net.peeweek.gameplay-ingredients/StarterAssets/GameplayIngredients-Starter-URP.unitypackage", false);
+                        AssetDatabase.ImportPackage("Packages/com.stylovich.gameplay-ingredients/StarterAssets/GameplayIngredients-Starter-URP.unitypackage", false);
                 }
             }
         }

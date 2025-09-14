@@ -4,7 +4,7 @@ namespace GameplayIngredients.Events
 {
     [AddComponentMenu(ComponentMenu.eventsPath + "On Message Event")]
     [HelpURL(Help.URL + "messager")]
-    [AdvancedHierarchyIcon("Packages/net.peeweek.gameplay-ingredients/Icons/Events/ic-event-message.png")]
+    [AdvancedHierarchyIcon("Packages/com.stylovich.gameplay-ingredients/Icons/Events/ic-event-message.png")]
     public class OnMessageEvent : EventBase
     {
         public string MessageName = "Message";
@@ -27,7 +27,7 @@ namespace GameplayIngredients.Events
             {
                 Callable.Call(OnMessageRecieved, instigator);
             }
-            catch(System.Exception e)
+            catch (System.Exception e)
             {
                 UnityEngine.Debug.LogError(string.Format("OnMessageEvent : Exception Caught while catching message '{0}' on Object '{1}'", MessageName, gameObject.name));
                 UnityEngine.Debug.LogException(e);

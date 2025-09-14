@@ -4,7 +4,7 @@ using UnityEngine;
 namespace GameplayIngredients.Events
 {
     [AddComponentMenu(ComponentMenu.eventsPath + "On Trigger Event")]
-    [AdvancedHierarchyIcon("Packages/net.peeweek.gameplay-ingredients/Icons/Events/ic-event-trigger.png")]
+    [AdvancedHierarchyIcon("Packages/com.stylovich.gameplay-ingredients/Icons/Events/ic-event-trigger.png")]
     [RequireComponent(typeof(Collider))]
     public class OnTriggerEvent : EventBase
     {
@@ -17,7 +17,7 @@ namespace GameplayIngredients.Events
 
         private void OnTriggerEnter(Collider other)
         {
-            if (OnlyInteractWithTag && other.tag == Tag )
+            if (OnlyInteractWithTag && other.tag == Tag)
             {
                 Callable.Call(onTriggerEnter, other.gameObject);
             }
@@ -29,7 +29,7 @@ namespace GameplayIngredients.Events
 
         private void OnTriggerExit(Collider other)
         {
-            if (OnlyInteractWithTag && other.tag == Tag )
+            if (OnlyInteractWithTag && other.tag == Tag)
             {
                 Callable.Call(onTriggerExit, other.gameObject);
             }
