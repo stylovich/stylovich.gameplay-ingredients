@@ -1,4 +1,4 @@
-using NaughtyAttributes;
+using TriInspector;
 using UnityEngine;
 
 namespace GameplayIngredients.Actions
@@ -7,7 +7,7 @@ namespace GameplayIngredients.Actions
     [Callable("Game Objects", "Actions/ic-action-spawn.png")]
     public class SpawnPrefabAction : ActionBase
     {
-        [ReorderableList]
+        [ListDrawerSettings(Draggable = true)]
         public GameObject[] Prefabs;
 
         public Transform TargetTransform;

@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 using System.Linq;
-using NaughtyAttributes.Editor;
 using GameplayIngredients.Rigs;
 
 namespace GameplayIngredients.Editor
@@ -51,8 +50,8 @@ namespace GameplayIngredients.Editor
                 GUILayout.Label("Rig Update Properties", EditorStyles.boldLabel);
                 using (new EditorGUI.IndentLevelScope(1))
                 {
-                    NaughtyEditorGUI.PropertyField_Layout(m_UpdateMode, true);
-                    NaughtyEditorGUI.PropertyField_Layout(m_RigPriority, true);
+                    EditorGUILayout.PropertyField(m_UpdateMode, includeChildren: true);
+                    EditorGUILayout.PropertyField(m_RigPriority, includeChildren: true);
                 }
             }
 

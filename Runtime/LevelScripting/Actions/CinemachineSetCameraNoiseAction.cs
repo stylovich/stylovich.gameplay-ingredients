@@ -1,6 +1,6 @@
 using UnityEngine;
 using Cinemachine;
-using NaughtyAttributes;
+using TriInspector;
 
 namespace GameplayIngredients.Actions
 {

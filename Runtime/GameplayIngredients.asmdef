@@ -2,7 +2,7 @@
     "name": "GameplayIngredients",
     "rootNamespace": "",
     "references": [
-        "NaughtyAttributes.Core",
+        "TriInspector",
         "Cinemachine",
         "Unity.Timeline",
         "UnityEngine.UI",

@@ -1,4 +1,4 @@
-using NaughtyAttributes;
+using TriInspector;
 using System.Linq;
 using UnityEngine;
 using GameplayIngredients.Actions;
@@ -14,7 +14,7 @@ namespace GameplayIngredients.StateMachines
         [StateMachineState]
         public string DefaultState;
 
-        [ReorderableList, NonNullCheck]
+        [ListDrawerSettings(Draggable = true), NonNullCheck]
         public State[] States = new State[0];
 
         public State CurrentState { get { return m_CurrentState; } }

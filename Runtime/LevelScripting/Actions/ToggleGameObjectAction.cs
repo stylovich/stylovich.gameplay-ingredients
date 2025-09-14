@@ -1,4 +1,4 @@
-using NaughtyAttributes;
+using TriInspector;
 using UnityEngine;
 
 namespace GameplayIngredients.Actions
@@ -20,7 +20,7 @@ namespace GameplayIngredients.Actions
             }
         }
 
-        [ReorderableList]
+        [ListDrawerSettings(Draggable = true)]
         public GameObjectToggle[] Targets;
 
         public override void Execute(GameObject instigator = null)

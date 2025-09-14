@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using NaughtyAttributes;
+using TriInspector;
 
 namespace GameplayIngredients
 {
     [HelpURL(Help.URL + "settings")]
+    [DeclareBoxGroup("Editor", Title = "Editor")]
+    [DeclareBoxGroup("Managers", Title = "Managers")]
+    [DeclareBoxGroup("Callables", Title = "Callables")]
     public class GameplayIngredientsSettings : ScriptableObject
     {
         public string[] excludedeManagers { get { return m_ExcludedManagers; } }
@@ -14,20 +17,20 @@ namespace GameplayIngredients
 
         public bool disableWelcomeScreenAutoStart { get { return m_DisableWelcomeScreenAutoStart; } }
 
-        [BoxGroup("Editor")]
+        [Group("Editor")]
         [SerializeField]
         protected bool m_DisableWelcomeScreenAutoStart;
 
-        [BoxGroup("Managers")]
-        [SerializeField, ReorderableList, ExcludedManager]
+        [Group("Managers")]
+        [SerializeField, ListDrawerSettings(Draggable = true), ExcludedManager]
         protected string[] m_ExcludedManagers;
 
-        [BoxGroup("Callables")]
-        [SerializeField, InfoBox("Verbose Calls enable logging at runtime, this can lead to performance drop, use only when debugging.", EInfoBoxType.Warning)]
+        [Group("Callables")]
+        [SerializeField, InfoBox("Verbose Calls enable logging at runtime, this can lead to performance drop, use only when debugging.", TriMessageType.Warning)]
         private bool m_VerboseCalls = false;
 
-        [BoxGroup("Callables")]
-        [SerializeField, InfoBox("Per-update calls should be avoided due to high performance impact. Enable and use with care, only if strictly necessary.", EInfoBoxType.Warning)]
+        [Group("Callables")]
+        [SerializeField, InfoBox("Per-update calls should be avoided due to high performance impact. Enable and use with care, only if strictly necessary.", TriMessageType.Warning)]
         private bool m_AllowUpdateCalls = false;
 
         const string kAssetName = "GameplayIngredientsSettings";

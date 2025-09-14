@@ -1,4 +1,4 @@
-using NaughtyAttributes;
+using TriInspector;
 using System.Linq;
 using UnityEngine;
 
@@ -28,7 +28,7 @@ namespace GameplayIngredients.Rigs
         public bool StopOnSteps = false;
         public float Speed = 2.0f;
 
-        [ReorderableList, SerializeField, NonNullCheck]
+        [ListDrawerSettings(Draggable = true), SerializeField, NonNullCheck]
         protected GameObject[] Path;
 
         public PlayMode initialPlayMode = PlayMode.Playing;

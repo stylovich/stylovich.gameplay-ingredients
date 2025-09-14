@@ -1,11 +1,9 @@
-using NaughtyAttributes;
+using TriInspector;
 using System;
 using UnityEngine;
 
-
 namespace GameplayIngredients.Rigs
 {
-
     public class GenericBindingRig : Rig
     {
         public enum BindingType

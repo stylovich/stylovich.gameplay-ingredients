@@ -1,4 +1,4 @@
-using NaughtyAttributes;
+using TriInspector;
 using UnityEngine;
 
 namespace GameplayIngredients.Actions
@@ -7,7 +7,7 @@ namespace GameplayIngredients.Actions
     [Callable("Game Objects", "Actions/ic-action-trash.png")]
     public class DestroyObjectAction : ActionBase
     {
-        [ReorderableList]
+        [ListDrawerSettings(Draggable = true)]
         public GameObject[] ObjectsToDestroy;
         public bool DestroyInstigator = false;
 

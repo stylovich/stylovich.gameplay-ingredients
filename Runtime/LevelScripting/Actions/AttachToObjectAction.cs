@@ -1,4 +1,4 @@
-using NaughtyAttributes;
+using TriInspector;
 using UnityEngine;
 
 namespace GameplayIngredients.Actions
@@ -16,7 +16,7 @@ namespace GameplayIngredients.Actions
 
         public Action action = Action.Attach;
 
-        [ReorderableList]
+        [ListDrawerSettings(Draggable = true)]
         public GameObject[] objectsToAttach;
         public bool AttachInstigator = false;
         public GameObject parentObject;

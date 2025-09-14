@@ -1,4 +1,4 @@
-using NaughtyAttributes;
+using TriInspector;
 using System.Collections;
 using UnityEngine;
 namespace GameplayIngredients.Logic

@@ -1,12 +1,11 @@
 using UnityEngine;
-using NaughtyAttributes;
+using TriInspector;
 
 namespace GameplayIngredients
 {
     public class GameLevel : ScriptableObject
     {
-        [ReorderableList, Scene]
+        [ListDrawerSettings(Draggable = true), Scene]
         public string[] StartupScenes;
     }
 }
-

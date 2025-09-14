@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
-using NaughtyAttributes;
+using TriInspector;
 using GameplayIngredients.Rigs;
 
 namespace GameplayIngredients
@@ -18,14 +18,13 @@ namespace GameplayIngredients
         [NonNullCheck]
         public Timer timer;
 
-        [InfoBox("Use the following wildcards:\n - %h : hours\n - %m : minutes\n - %s : seconds\n - %x : milliseconds", EInfoBoxType.Normal)]
+        [InfoBox("Use the following wildcards:\n - %h : hours\n - %m : minutes\n - %s : seconds\n - %x : milliseconds")]
         public string format = "%h:%m:%s:%x";
 
         public override UpdateMode defaultUpdateMode => UpdateMode.Update;
 
         public override int defaultPriority => 0;
 
-       
 
         private void OnValidate()
         {

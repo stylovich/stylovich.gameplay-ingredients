@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 using System.Linq;
-using NaughtyAttributes.Editor;
+
 using GameplayIngredients.Rigs;
 
 namespace GameplayIngredients.Editor

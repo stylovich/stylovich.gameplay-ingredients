@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEditor;
-using NaughtyAttributes.Editor;
 using GameplayIngredients.Actions;
 
 namespace GameplayIngredients.Editor
@@ -26,7 +25,7 @@ namespace GameplayIngredients.Editor
             DrawBreadCrumb("Action", color, () =>
             {
                 using (new GUILayout.VerticalScope(GUILayout.ExpandWidth(true)))
-                    NaughtyEditorGUI.PropertyField_Layout(m_Name, true);
+                    EditorGUILayout.PropertyField(m_Name, includeChildren: true);
                 OpenIngredientsExplorerButton(serializedObject.targetObject as ActionBase);
             });
 

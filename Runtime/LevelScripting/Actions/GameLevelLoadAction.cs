@@ -1,6 +1,6 @@
 using System.Linq;
 using UnityEngine;
-using NaughtyAttributes;
+using TriInspector;
 
 namespace GameplayIngredients.Actions
 {

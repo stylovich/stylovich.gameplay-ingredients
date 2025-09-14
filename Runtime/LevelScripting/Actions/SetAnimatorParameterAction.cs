@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-using NaughtyAttributes;
-
+using UnityEngine;
+using TriInspector;
 
 namespace GameplayIngredients.Actions
 {

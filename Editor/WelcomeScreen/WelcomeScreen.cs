@@ -77,7 +77,6 @@ namespace GameplayIngredients.Editor
 
         private void OnEnable()
         {
-            this.position = new Rect((Screen.width / 2.0f) - WindowWidth / 2, (Screen.height / 2.0f) - WindowHeight / 2, WindowWidth, WindowHeight);
             this.minSize = new Vector2(WindowWidth, WindowHeight);
             this.maxSize = new Vector2(WindowWidth, WindowHeight);
 
@@ -117,8 +116,8 @@ namespace GameplayIngredients.Editor
                         bool value = false;
 
                         value = wizardMode == WizardMode.TipOfTheDay;
-                        value = GUILayout.Toggle(value, "  Tips  ", Styles.buttonLeft); 
-                        if(value)
+                        value = GUILayout.Toggle(value, "  Tips  ", Styles.buttonLeft);
+                        if (value)
                             wizardMode = WizardMode.TipOfTheDay;
 
                         value = wizardMode == WizardMode.FirstTimeSetup;
@@ -128,7 +127,7 @@ namespace GameplayIngredients.Editor
 
                         value = wizardMode == WizardMode.About;
                         value = GUILayout.Toggle(value, "  About  ", Styles.buttonRight);
-                        if(value)
+                        if (value)
                             wizardMode = WizardMode.About;
                     }
 
@@ -154,7 +153,7 @@ namespace GameplayIngredients.Editor
             EditorGUI.DrawRect(line, Color.black);
             using (new GUILayout.HorizontalScope())
             {
-                if(!GameplayIngredientsSettings.currentSettings.disableWelcomeScreenAutoStart)
+                if (!GameplayIngredientsSettings.currentSettings.disableWelcomeScreenAutoStart)
                 {
                     showOnStartup = GUILayout.Toggle(showOnStartup, " Show this window on startup");
                 }

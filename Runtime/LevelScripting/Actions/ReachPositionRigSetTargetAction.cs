@@ -1,5 +1,5 @@
-﻿using GameplayIngredients.Rigs;
-using NaughtyAttributes;
+using GameplayIngredients.Rigs;
+using TriInspector;
 using UnityEngine;
 
 namespace GameplayIngredients.Actions

@@ -2,8 +2,8 @@
     "name": "GameplayIngredients-Editor",
     "rootNamespace": "",
     "references": [
-        "NaughtyAttributes.Core",
-        "NaughtyAttributes.Editor",
+        "TriInspector",
+        "TriInspector.Editor",
         "GameplayIngredients",
         "Unity.ugui",
         "Unity.Timeline",

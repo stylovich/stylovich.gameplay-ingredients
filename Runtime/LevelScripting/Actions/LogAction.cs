@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using NaughtyAttributes;
+using UnityEngine;
+using TriInspector;
 
 namespace GameplayIngredients.Actions
 {
@@ -12,7 +12,7 @@ namespace GameplayIngredients.Actions
 %TIME% : Time (since startup)
 ";
 
-        [Multiline, InfoBox(kHelpText, EInfoBoxType.Normal)]
+        [Multiline, InfoBox(kHelpText)]
         public string LogText = "Instigator = %INSTIGATOR%";
         public LogType type = LogType.Log;
 

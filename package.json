@@ -11,7 +11,7 @@
   "dependencies": {
     "com.unity.cinemachine": "2.8.4",
     "com.unity.timeline": "1.6.4",
-    "com.dbrizov.naughtyattributes": "2.1.4"
+    "com.codewriter.triinspector": "1.14.1"
   },
   "keywords": [
     "Gameplay",

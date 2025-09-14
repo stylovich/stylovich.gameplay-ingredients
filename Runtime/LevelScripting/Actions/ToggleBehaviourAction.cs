@@ -1,4 +1,4 @@
-﻿using NaughtyAttributes;
+using TriInspector;
 using UnityEngine;
 
 namespace GameplayIngredients.Actions
@@ -7,8 +7,7 @@ namespace GameplayIngredients.Actions
     [Callable("Game Objects", "Actions/ic-action-list.png")]
     public class ToggleBehaviourAction : ActionBase
     {
-
-        [ReorderableList]
+        [ListDrawerSettings(Draggable = true)]
         public BehaviourToggle[] Targets;
 
         public override void Execute(GameObject instigator = null)

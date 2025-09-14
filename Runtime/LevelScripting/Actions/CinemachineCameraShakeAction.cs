@@ -1,6 +1,6 @@
 using UnityEngine;
 using Cinemachine;
-using NaughtyAttributes;
+using TriInspector;
 
 namespace GameplayIngredients.Actions
 {
@@ -41,7 +41,8 @@ namespace GameplayIngredients.Actions
         [ShowIf("randomImpulse")]
         public bool normalize = false;
         [Tooltip("A random rescale of the impulse vector, after normalization")]
-        [ShowIf(EConditionOperator.And, "randomImpulse", "normalize")]
+        [ShowIf(nameof(randomImpulse))]
+        [ShowIf(nameof(normalize))]
         public Vector2 postNormalizeRemap = Vector2.one;
 
         public override void Execute(GameObject instigator = null)

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using GameplayIngredients.LevelStreaming;
-using NaughtyAttributes;
+using TriInspector;
 
 namespace GameplayIngredients.Actions
 {
@@ -10,7 +10,7 @@ namespace GameplayIngredients.Actions
     [Callable("Game", "Misc/ic-scene.png")]
     public class StreamingLevelAction : ActionBase
     {
-        [ReorderableList, Scene]
+        [ListDrawerSettings(Draggable = true), Scene]
         public string[] Scenes;
         public string SceneToActivate;
         public LevelStreamingManager.StreamingAction Action = LevelStreamingManager.StreamingAction.Load;

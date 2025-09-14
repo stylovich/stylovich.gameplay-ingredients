@@ -1,5 +1,5 @@
 using GameplayIngredients.Managers;
-using NaughtyAttributes;
+using TriInspector;
 using UnityEngine;
 
 namespace GameplayIngredients.Events

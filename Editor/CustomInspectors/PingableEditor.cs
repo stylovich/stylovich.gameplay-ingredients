@@ -1,4 +1,3 @@
-using NaughtyAttributes.Editor;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEditor;
@@ -6,7 +5,7 @@ using UnityEngine;
 
 namespace GameplayIngredients.Editor
 {
-    public abstract class PingableEditor : NaughtyInspector
+    public abstract class PingableEditor : UnityEditor.Editor
     {
         public bool needRepaint { get => m_pingValue > 0; }
         float m_pingValue;
@@ -16,10 +15,8 @@ namespace GameplayIngredients.Editor
 
         static Dictionary<MonoBehaviour, PingableEditor> trackedEditors;
 
-        protected override void OnEnable()
+        protected virtual void OnEnable()
         {
-            base.OnEnable();
-
             if (trackedEditors == null)
                 trackedEditors = new Dictionary<MonoBehaviour, PingableEditor>();
 
@@ -29,7 +26,7 @@ namespace GameplayIngredients.Editor
             m_RequiredModule = serializedObject.targetObject.GetType().GetCustomAttribute<WarnDisabledModuleAttribute>();
         }
 
-        protected override void OnDisable()
+        protected virtual void OnDisable()
         {
             if (serializedObject != null && serializedObject.targetObject != null)
             {
@@ -40,7 +37,6 @@ namespace GameplayIngredients.Editor
             {
                 trackedEditors.Clear();
             }
-            base.OnDisable();
         }
 
         public abstract void OnInspectorGUI_PingArea();
@@ -106,4 +102,3 @@ namespace GameplayIngredients.Editor
         }
     }
 }
-

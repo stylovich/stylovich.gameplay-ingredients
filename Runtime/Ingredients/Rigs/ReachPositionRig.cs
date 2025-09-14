@@ -1,4 +1,4 @@
-using NaughtyAttributes;
+using TriInspector;
 using UnityEngine;
 
 namespace GameplayIngredients.Rigs
@@ -13,7 +13,7 @@ namespace GameplayIngredients.Rigs
 
         [Header("Target")]
         [SerializeField]
-        [InfoBox("Target needs to have the same parent as the current game object", EInfoBoxType.Warning)]
+        [InfoBox("Target needs to have the same parent as the current game object", TriMessageType.Warning)]
         protected Transform m_Target;
         [Header("Motion")]
         public float Dampen = 1.0f;

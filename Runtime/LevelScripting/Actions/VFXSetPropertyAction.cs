@@ -2,7 +2,7 @@ using UnityEngine;
 #if PACKAGE_VFXGRAPH
 using UnityEngine.VFX;
 #endif
-using NaughtyAttributes;
+using TriInspector;
 using UnityEngine.Serialization;
 
 namespace GameplayIngredients.Actions

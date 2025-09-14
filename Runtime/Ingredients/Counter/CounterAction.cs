@@ -1,4 +1,4 @@
-﻿using NaughtyAttributes;
+using TriInspector;
 using UnityEngine;
 
 namespace GameplayIngredients.Actions
@@ -25,7 +25,7 @@ namespace GameplayIngredients.Actions
             GameSave,
         }
 
-        [ReorderableList]
+        [ListDrawerSettings(Draggable = true)]
         public Counter[] Counters;
 
         public CounterOperation Operation = CounterOperation.Set;

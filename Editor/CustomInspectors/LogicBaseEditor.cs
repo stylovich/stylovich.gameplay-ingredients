@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEditor;
-using NaughtyAttributes.Editor;
 using GameplayIngredients.Logic;
 
 namespace GameplayIngredients.Editor
@@ -24,7 +23,7 @@ namespace GameplayIngredients.Editor
 
             DrawBreadCrumb("Logic", color, () =>
             {
-                NaughtyEditorGUI.PropertyField_Layout(m_Name, true);
+                EditorGUILayout.PropertyField(m_Name, includeChildren: true);
                 OpenIngredientsExplorerButton(serializedObject.targetObject as LogicBase);
             });
 

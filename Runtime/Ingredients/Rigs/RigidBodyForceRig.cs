@@ -1,10 +1,13 @@
-﻿using NaughtyAttributes;
+using TriInspector;
 using UnityEngine;
 
 namespace GameplayIngredients.Rigs
 {
     [AddComponentMenu(ComponentMenu.rigsPath + "RigidBody Force Rig")]
     [RequireComponent(typeof(Rigidbody))]
+    [DeclareBoxGroup("Configuration", Title = "Configuration")]
+    [DeclareBoxGroup("Force Properties", Title = "Force Properties")]
+    [DeclareBoxGroup("Noise", Title = "Noise")]
     public class RigidBodyForceRig : Rig
     {
         public override int defaultPriority => 0;
@@ -22,28 +25,28 @@ namespace GameplayIngredients.Rigs
             Explosion
         }
 
-        [BoxGroup("Configuration"), Tooltip("The kind of force to apply")]
+        [Group("Configuration"), Tooltip("The kind of force to apply")]
         public EffectorType type;
-        [BoxGroup("Configuration"), Tooltip("How to compute the force applied every frame")]
+        [Group("Configuration"), Tooltip("How to compute the force applied every frame")]
         public ForceMode forceMode;
 
-        [BoxGroup("Force Properties"),Tooltip("The force or torque vector"), ShowIf("isNotExplosion")]
+        [Group("Force Properties"), Tooltip("The force or torque vector"), ShowIf("isNotExplosion")]
         public Vector3 vector;
-        [BoxGroup("Force Properties"), Tooltip("The force or explosion position"), ShowIf("needPosition")]
+        [Group("Force Properties"), Tooltip("The force or explosion position"), ShowIf("needPosition")]
         public Vector3 position;
-        [BoxGroup("Force Properties"), Tooltip("The force scale over time")]
+        [Group("Force Properties"), Tooltip("The force scale over time")]
         public AnimationCurve ForceOverTime = new AnimationCurve(new Keyframe(0, 1), new Keyframe(1, 1));
 
-        [BoxGroup("Force Properties"), ShowIf("isExplosion")]
+        [Group("Force Properties"), ShowIf("isExplosion")]
         public float explosionForce;
-        [BoxGroup("Force Properties"), ShowIf("isExplosion")]
+        [Group("Force Properties"), ShowIf("isExplosion")]
         public float explosionRadius;
-        [BoxGroup("Force Properties"), ShowIf("isExplosion")]
+        [Group("Force Properties"), ShowIf("isExplosion")]
         public float upwardsModifier;
 
-        [BoxGroup("Noise")]
+        [Group("Noise")]
         public bool AddNoise = false;
-        [BoxGroup("Noise")]
+        [Group("Noise")]
         public Vector3 NoiseScale = Vector3.one; 
 
         private float m_Time;

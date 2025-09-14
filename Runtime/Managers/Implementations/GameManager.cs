@@ -1,6 +1,6 @@
 using GameplayIngredients.Actions;
 using GameplayIngredients.LevelStreaming;
-using NaughtyAttributes;
+using TriInspector;
 using System.Linq;
 using UnityEngine;
 
@@ -17,7 +17,7 @@ namespace GameplayIngredients
 
         [Header("Levels"), NonNullCheck]
         public GameLevel MainMenuGameLevel;
-        [ReorderableList, NonNullCheck]
+        [ListDrawerSettings(Draggable = true), NonNullCheck]
         public GameLevel[] MainGameLevels;
 
         [Header("Save")]

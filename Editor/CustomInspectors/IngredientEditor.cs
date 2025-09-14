@@ -1,5 +1,4 @@
 using GameplayIngredients.Editor;
-using NaughtyAttributes.Editor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -65,11 +64,16 @@ public abstract class IngredientEditor : PingableEditor
                 if (isCallableArray(prop))
                     reorderableLists[GetPropertyKeyName(prop)].DoLayoutList();
                 else
-                    NaughtyEditorGUI.PropertyField_Layout(prop, true);
-            }    
+                    EditorGUILayout.PropertyField(prop, includeChildren: true);
+            }
         }
 
         DrawButtons();
+    }
+
+    protected virtual void DrawButtons()
+    {
+
     }
 
     protected void DrawBreadCrumb(string label, Color color, Action content = null)
@@ -80,7 +84,7 @@ public abstract class IngredientEditor : PingableEditor
 
             float bg = EditorGUIUtility.isProSkin ? .3f : .9f;
             GUI.backgroundColor = new Color(bg, bg, bg, 1);
-            Rect r = GUILayoutUtility.GetRect(8,8, 22,22, GUILayout.Width(8));
+            Rect r = GUILayoutUtility.GetRect(8, 8, 22, 22, GUILayout.Width(8));
             EditorGUI.DrawRect(r, color);
             GUILayout.Label(label, Styles.breadCrumb, GUILayout.MinWidth(28));
 
@@ -103,7 +107,7 @@ public abstract class IngredientEditor : PingableEditor
 
     protected void OpenIngredientsExplorerButton(MonoBehaviour target)
     {
-        DrawDebugButton(Styles.callableIconContent, ()=> IngredientsExplorerWindow.OpenWindow(target), GUILayout.Width(28));
+        DrawDebugButton(Styles.callableIconContent, () => IngredientsExplorerWindow.OpenWindow(target), GUILayout.Width(28));
     }
 
     protected static class Styles
@@ -118,7 +122,7 @@ public abstract class IngredientEditor : PingableEditor
             callableIconContent = new GUIContent(AssetDatabase.LoadAssetAtPath<Texture2D>("Packages/net.peeweek.gameplay-ingredients/Icons/Misc/ic-callable.png"));
 
             drawDebugButton = new GUIStyle(EditorStyles.miniButton);
-            drawDebugButton.margin = new RectOffset(1,1,1,1);
+            drawDebugButton.margin = new RectOffset(1, 1, 1, 1);
             drawDebugButton.fixedHeight = 20;
 
 
@@ -148,7 +152,7 @@ public abstract class IngredientEditor : PingableEditor
             breadCrumb.margin = new RectOffset();
 
             breadCrumb.onNormal.background = bc;
-            breadCrumb.onNormal.textColor = EditorGUIUtility.isProSkin? Color.white : Color.black;
+            breadCrumb.onNormal.textColor = EditorGUIUtility.isProSkin ? Color.white : Color.black;
             breadCrumb.onHover = breadCrumb.onNormal;
             breadCrumb.onActive = breadCrumb.onNormal;
             breadCrumb.onFocused = breadCrumb.onNormal;

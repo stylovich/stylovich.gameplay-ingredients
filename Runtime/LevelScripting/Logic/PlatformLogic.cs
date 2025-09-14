@@ -1,4 +1,4 @@
-using NaughtyAttributes;
+using TriInspector;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -15,7 +15,7 @@ namespace GameplayIngredients.Logic
             IsNotTarget
         }
 
-        [ReorderableList]
+        [ListDrawerSettings(Draggable = true)]
         public RuntimePlatform[] platforms;
 
         public InclusionMode inclusionMode = InclusionMode.IsTarget;

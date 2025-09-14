@@ -1,11 +1,12 @@
-﻿using UnityEngine;
-using NaughtyAttributes;
+using UnityEngine;
+using TriInspector;
 
 namespace GameplayIngredients
 {
     [HelpURL(Help.URL + "counters")]
     [AddComponentMenu(ComponentMenu.counterPath + "Counter")]
     [AdvancedHierarchyIcon("Packages/net.peeweek.gameplay-ingredients/Icons/Misc/ic-counter.png")]
+    [DeclareBoxGroup("Default Value", Title = "Default Value")]
 
     public class Counter : GameplayIngredientsBehaviour
     {
@@ -15,19 +16,19 @@ namespace GameplayIngredients
             GlobalVariable,
             GameSave,
         }
-        [BoxGroup("Default Value")]
+        [Group("Default Value")]
         public ValueSourceType ValueSource = ValueSourceType.Property;
-        [BoxGroup("Default Value"),ShowIf("isValueProperty")]
+        [Group("Default Value"),ShowIf("isValueProperty")]
         public int Value = 1;
 
-        [BoxGroup("Default Value"), ShowIf("isValueGameSave")]
+        [Group("Default Value"), ShowIf("isValueGameSave")]
         public string GameSaveVariableName = "Variable";
-        [BoxGroup("Default Value"), ShowIf("isValueGameSave")]
+        [Group("Default Value"), ShowIf("isValueGameSave")]
         public GameSaveManager.Location GameSaveLocation = GameSaveManager.Location.System;
 
-        [BoxGroup("Default Value"), ShowIf("isValueGlobal")]
+        [Group("Default Value"), ShowIf("isValueGlobal")]
         public string GlobalVariableName = "Variable";
-        [BoxGroup("Default Value"), ShowIf("isValueGlobal")]
+        [Group("Default Value"), ShowIf("isValueGlobal")]
         public Globals.Scope GlobalScope = Globals.Scope.Global;
 
         public int CurrentValue { get; private set; }

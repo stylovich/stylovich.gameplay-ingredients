@@ -1,4 +1,4 @@
-using NaughtyAttributes;
+using TriInspector;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +35,7 @@ namespace GameplayIngredients
         }
 
         [Header("Blueprint")]
-        [ReorderableList, NoLabel, NonNullCheck]
+        [ListDrawerSettings(Draggable = true), NoLabel, NonNullCheck]
         public GameObject[] FactoryBlueprints;
         public BlueprintSelectionMode blueprintSelecionMode = BlueprintSelectionMode.Random;
         [ShowIf("usesGameSave")]
