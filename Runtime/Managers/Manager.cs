@@ -59,6 +59,12 @@ namespace GameplayIngredients
                 if (doNotCreateAttr != null)
                     continue;
 
+                // Check for entries in exclusion List
+                if (exclusionList != null && exclusionList.ToList().Contains(type.Name))
+                {
+                    continue;
+                }
+
                 var prefabAttr = type.GetCustomAttribute<ManagerDefaultPrefabAttribute>(); 
                 GameObject gameObject;
 
