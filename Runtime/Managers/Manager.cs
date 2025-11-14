@@ -59,13 +59,6 @@ namespace GameplayIngredients
                 if (doNotCreateAttr != null)
                     continue;
 
-                // Check for entries in exclusion List
-                if (exclusionList != null && exclusionList.ToList().Contains(type.Name))
-                {
-                    Debug.LogWarning($"Manager : {type.Name} is in GameplayIngredientSettings.excludedeManagers List: ignoring Creation");
-                    continue;
-                }
-
                 var prefabAttr = type.GetCustomAttribute<ManagerDefaultPrefabAttribute>(); 
                 GameObject gameObject;
 
