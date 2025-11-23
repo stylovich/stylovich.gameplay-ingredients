@@ -7,7 +7,7 @@
         "GameplayIngredients",
         "Unity.ugui",
         "Unity.Timeline",
-        "Cinemachine",
+        "Unity.Cinemachine",
         "Unity.InputSystem"
     ],
     "includePlatforms": [

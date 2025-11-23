@@ -3,7 +3,7 @@
     "rootNamespace": "",
     "references": [
         "TriInspector",
-        "Cinemachine",
+        "Unity.Cinemachine",
         "Unity.Timeline",
         "UnityEngine.UI",
         "Unity.InputSystem"

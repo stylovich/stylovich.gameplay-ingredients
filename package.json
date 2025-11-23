@@ -9,7 +9,7 @@
   "unity": "2021.3",
   "description": "Fork of Gameplay Ingredients with migration from NaughtyAttributes to Tri Inspector. A collection of scripts for editor and runtime that simplifies building gameplay actions and logic.",
   "dependencies": {
-    "com.unity.cinemachine": "2.8.4",
+    "com.unity.cinemachine": "3.1.0",
     "com.unity.timeline": "1.6.4",
     "com.codewriter.triinspector": "1.14.1"
   },

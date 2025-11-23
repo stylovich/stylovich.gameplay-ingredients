@@ -1,5 +1,5 @@
 using UnityEngine;
-using Cinemachine;
+using Unity.Cinemachine;
 
 namespace GameplayIngredients.Actions
 {
@@ -25,11 +25,11 @@ namespace GameplayIngredients.Actions
             {
                 if (action == Action.Disable || settings == null)
                 {
-                    vcm.Brain.m_CustomBlends = null;
+                    vcm.Brain.CustomBlends = null;
                 }
                 else
                 {
-                    vcm.Brain.m_CustomBlends = settings;
+                    vcm.Brain.CustomBlends = settings;
                 }
             }
         }

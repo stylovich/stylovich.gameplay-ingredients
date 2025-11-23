@@ -117,7 +117,7 @@ namespace GameplayIngredients
             destroy.ObjectsToDestroy = new GameObject[] { go };
 
             var nextActions = targetLevel < 0 ? OnMainMenuLoaded : OnLevelLoaded;
-            next.Calls = nextActions.Concat(onComplete).ToArray();
+            next.Calls = nextActions.Concat(onComplete != null ? onComplete : new Callable[0]).ToArray();
 
             // Return first callable
             return cameraFade;

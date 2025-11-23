@@ -160,7 +160,7 @@ namespace GameplayIngredients
                 case Key.OEM3: return kb.oem3Key;
                 case Key.OEM4: return kb.oem4Key;
                 case Key.OEM5: return kb.oem5Key;
-                case Key.IMESelected: return kb.imeSelected;
+                // case Key.IMESelected: return kb.imeSelected;
                 default:
                     throw new System.NotImplementedException();
             }

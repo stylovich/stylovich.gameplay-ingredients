@@ -1,5 +1,5 @@
 using UnityEngine;
-using Cinemachine;
+using Unity.Cinemachine;
 using TriInspector;
 
 namespace GameplayIngredients.Actions
@@ -12,15 +12,15 @@ namespace GameplayIngredients.Actions
         [SerializeField]
         bool useLiveCamera;
         [SerializeField, HideIf("useLiveCamera")]
-        CinemachineVirtualCamera targetCamera;
+        CinemachineCamera targetCamera;
 
         [SerializeField]
         NoiseSettings settings;
 
         public override void Execute(GameObject instigator = null)
         {
-            CinemachineVirtualCamera cam = useLiveCamera ?
-                Manager.Get<VirtualCameraManager>().GetComponent<CinemachineBrain>().ActiveVirtualCamera as CinemachineVirtualCamera
+             CinemachineCamera cam = useLiveCamera ?
+                Manager.Get<VirtualCameraManager>().GetComponent<CinemachineBrain>().ActiveVirtualCamera as CinemachineCamera
                 : targetCamera;
 
             if(cam == null)
@@ -29,12 +29,12 @@ namespace GameplayIngredients.Actions
                 return;
             }
 
-            var noise = cam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+            var noise = cam.GetCinemachineComponent(CinemachineCore.Stage.Noise) as CinemachineBasicMultiChannelPerlin;
 
             if(noise == null && settings != null)
-                noise = cam.AddCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+                noise = cam.gameObject.AddComponent<CinemachineBasicMultiChannelPerlin>();
 
-            noise.m_NoiseProfile = settings;
+            noise.NoiseProfile = settings;
         }
 
         public override string GetDefaultName() => $"CM Set Noise ({settings.name}) for {(useLiveCamera? "Live Camera" : targetCamera?.gameObject.name)}";
